@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 images=(
+  "zigbee2mqtt"
 )
 
 PREFIX="mypi"
@@ -21,7 +22,13 @@ function build {
 	echo
 }
 
-for project in "${images[@]}"
-do
-	build $project
-done
+if [ ! -z $1 ] 
+then 
+	build $1
+else
+	for project in "${images[@]}"
+	do
+		build $project
+	done
+fi
+
